@@ -60,10 +60,6 @@ export const Navigation = () => {
     }
   }, [pathname, isMobile]);
 
- 
-
- 
-
   const handleMouseDown = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
@@ -124,8 +120,10 @@ export const Navigation = () => {
       setTimeout(() => setIsResetting(false), 300);
     }
   }
+
   const handleCreate = () => {
     const promise = create({ title: "Untitled" })
+      .then((documentId) => router.push(`/documents/${documentId}`))
 
     toast.promise(promise, {
       loading: "Creating a new note...",
@@ -167,17 +165,17 @@ export const Navigation = () => {
             icon={Settings}
             onClick={settings.onOpen}
           />
-          <Item 
-          onClick={handleCreate}
-          label="New page"
-          icon={PlusCircle} />
-          
+          <Item
+            onClick={handleCreate}
+            label="New page"
+            icon={PlusCircle}
+          />
         </div>
         <div className="mt-4">
           <DocumentList />
           <Item
             onClick={handleCreate}
-            icon={PlusCircle}
+            icon={Plus}
             label="Add a page"
           />
           <Popover>
@@ -208,7 +206,7 @@ export const Navigation = () => {
       >
         {!!params.documentId ? (
           <Navbar
-            isCollapsed ={isCollapsed}
+            isCollapsed={isCollapsed}
             onResetWidth={resetWidth}
           />
         ) : (
@@ -216,7 +214,6 @@ export const Navigation = () => {
             {isCollapsed && <MenuIcon onClick={resetWidth} role="button" className="h-6 w-6 text-muted-foreground" />}
           </nav>
         )}
-        
       </div>
     </>
   )

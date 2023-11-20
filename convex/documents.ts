@@ -1,4 +1,3 @@
-"use client"
 
 import { v } from "convex/values";
 

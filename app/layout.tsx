@@ -26,7 +26,7 @@ export default function RootLayout({
           <EdgeStoreProvider>
         <ThemeProvider 
         attribute='class'
-        defaultTheme='system'
+        defaultTheme='dark'
         enableSystem
         disableTransitionOnChange
         storageKey='visionarium-theme-2'>
